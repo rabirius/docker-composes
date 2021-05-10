@@ -1,4 +1,4 @@
 # List of docker compose configuration files.
 
-## Table of configurations
+## List of configurations
 * [Postgresql & Pgadmin4](postgres-pgadmin)
