@@ -3,7 +3,8 @@ version: '3.5'
 services:
   arangodb:
     container_name: arangodb_container
-    image: arangodb
+    platform: linux/x86_64
+    image: arangodb/enterprise:3.9.0-noavx
     environment:
       ARANGO_ROOT_PASSWORD: ${ARANGODB_ROOT_PASSWORD:-admin}
     volumes:

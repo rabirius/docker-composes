@@ -1,0 +1,2 @@
+FROM arangodb
+ENTRYPOINT ["arangodb"]

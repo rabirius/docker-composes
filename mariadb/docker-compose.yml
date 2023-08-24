@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  mariadb:
+    container_name: bb-mariadb-container
+    image: mariadb:10.2
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: bohubrihi
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306"
+    networks:
+      - bohubrihi
+    restart: on-failure
+    volumes:
+      - bbmaria:/var/lib/mysql
+
+networks:
+  bohubrihi:
+    driver: bridge
+
+volumes:
+  bbmaria:

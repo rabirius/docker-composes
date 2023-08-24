@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  mongodb1:
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_DATABASE=admin
+      - MONGO_INITDB_ROOT_ROLE=dbOwner
+      - MONGO_INITDB_AUTHENTICATION_MECHANISM=SCRAM-SHA-256
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb1-data:/data/db
+      - ./keyfile:/opt/keyfile
+    command: mongod --replSet rs0 --bind_ip_all --keyFile /opt/keyfile/keyfile
+
+  mongodb2:
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_DATABASE=admin
+      - MONGO_INITDB_ROOT_ROLE=dbOwner
+      - MONGO_INITDB_AUTHENTICATION_MECHANISM=SCRAM-SHA-256
+    volumes:
+      - mongodb2-data:/data/db
+      - ./keyfile:/opt/keyfile
+    command: mongod --replSet rs0 --bind_ip_all --keyFile /opt/keyfile/keyfile
+
+  mongodb3:
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_DATABASE=admin
+      - MONGO_INITDB_ROOT_ROLE=dbOwner
+      - MONGO_INITDB_AUTHENTICATION_MECHANISM=SCRAM-SHA-256
+    volumes:
+      - mongodb3-data:/data/db
+      - ./keyfile:/opt/keyfile
+    command: mongod --replSet rs0 --bind_ip_all --keyFile /opt/keyfile/keyfile
+
+volumes:
+  mongodb1-data:
+  mongodb2-data:
+  mongodb3-data:
