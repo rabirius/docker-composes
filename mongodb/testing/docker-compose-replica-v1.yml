@@ -2,7 +2,10 @@ version: '3.8'
 
 services:
   mongodb1:
-    image: mongo:latest
+    image: shikho/mongodb:7.0
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: mongodb1
     restart: unless-stopped
     networks:
@@ -14,11 +17,13 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=secret
     volumes:
       - mongodb1-data:/data/db
-      - ./keys/keyfile:/opt/keyfile
     command: mongod --replSet rs0 --bind_ip_all --keyFile /opt/keyfile
 
   mongodb2:
-    image: mongo:latest
+    image: shikho/mongodb:7.0
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: mongodb2
     restart: unless-stopped
     networks:
@@ -28,11 +33,13 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=secret
     volumes:
       - mongodb2-data:/data/db
-      - ./keys/keyfile:/opt/keyfile
     command: mongod --replSet rs0 --bind_ip_all --keyFile /opt/keyfile
 
   mongodb3:
-    image: mongo:latest
+    image: shikho/mongodb:7.0
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: mongodb3
     restart: unless-stopped
     networks:
@@ -42,7 +49,6 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=secret
     volumes:
       - mongodb3-data:/data/db
-      - ./keys/keyfile:/opt/keyfile
     command: mongod --replSet rs0 --bind_ip_all --keyFile /opt/keyfile
 
 networks:
