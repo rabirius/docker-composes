@@ -4,7 +4,7 @@ services:
   mongodb1:
     image: shikho/mongodb:7.0
     build:
-      context: testing
+      context: .
       dockerfile: Dockerfile
     container_name: mongodb1
     restart: unless-stopped
@@ -22,7 +22,7 @@ services:
   mongodb2:
     image: shikho/mongodb:7.0
     build:
-      context: testing
+      context: .
       dockerfile: Dockerfile
     container_name: mongodb2
     restart: unless-stopped
@@ -38,7 +38,7 @@ services:
   mongodb3:
     image: shikho/mongodb:7.0
     build:
-      context: testing
+      context: .
       dockerfile: Dockerfile
     container_name: mongodb3
     restart: unless-stopped
