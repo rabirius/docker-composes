@@ -14,7 +14,7 @@ services:
       - "27017:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_ROOT_PASSWORD=admin
     volumes:
       - mongodb1-data:/data/db
     command: mongod --replSet rs0 --bind_ip_all --keyFile /opt/keyfile
@@ -30,7 +30,7 @@ services:
       - mongoCluster
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_ROOT_PASSWORD=admin
     volumes:
       - mongodb2-data:/data/db
     command: mongod --replSet rs0 --bind_ip_all --keyFile /opt/keyfile
@@ -46,7 +46,7 @@ services:
       - mongoCluster
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_ROOT_PASSWORD=admin
     volumes:
       - mongodb3-data:/data/db
     command: mongod --replSet rs0 --bind_ip_all --keyFile /opt/keyfile
